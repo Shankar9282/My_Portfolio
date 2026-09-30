@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Shankar Kadam - Java Developer portfolio">
+<title>Shankar Kadam | Java Developer</title>
+<style>
+:root{--bg:#0b0f19;--card:#121a2b;--line:#1f2a45;--tx:#e6edf7;--mut:#93a0ba;--a:#00e5ff;--b:#7c4dff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.65}
+a{color:inherit}
+
+/* ===== NAVBAR ===== */
+.nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:14px 5vw;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(11,15,25,.94);backdrop-filter:blur(8px);z-index:10}
+.logo{font-weight:800;font-size:19px;text-decoration:none}
+.logo span,.g{background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+#links{display:flex;gap:4px;flex-wrap:wrap}
+#links a{text-decoration:none;color:var(--mut);padding:8px 14px;border-radius:8px;font-size:14px}
+#links a:hover,#links a.active{color:var(--tx);background:var(--card)}
+#links a.active{box-shadow:inset 0 -2px var(--a)}
+.menu{display:none;background:none;border:1px solid var(--line);color:var(--tx);font-size:20px;padding:4px 12px;border-radius:8px;cursor:pointer}
+
+/* ===== SECTIONS ===== */
+section{max-width:1000px;margin:0 auto;padding:80px 5vw 40px;scroll-margin-top:60px}
+section + section{border-top:1px solid var(--line)}
+
+h1{font-size:clamp(34px,8vw,60px);line-height:1.1}
+h2{font-size:30px;margin-bottom:8px}
+.hero-role{font-size:clamp(18px,3.5vw,24px);color:var(--mut);font-weight:500;margin:8px 0 16px}
+h2.sub{font-size:22px;margin:32px 0 14px}
+.sub2{margin:26px 0 12px;font-size:18px}
+.hi{color:var(--a);font-weight:600}
+.lead{color:var(--mut);max-width:680px;margin-bottom:24px}
+
+.btn{display:inline-block;padding:11px 22px;border-radius:10px;font-weight:600;font-size:14px;margin:0 8px 8px 0;border:1px solid var(--line);text-decoration:none;color:var(--tx);transition:.2s}
+.btn:hover{border-color:var(--a)}
+.btn.p{background:linear-gradient(90deg,var(--a),var(--b));color:#0b0f19;border:0}
+
+/* ===== HOME (background image) ===== */
+#home{max-width:none;padding:0;position:relative;overflow:hidden;min-height:calc(100vh - 60px);display:flex;flex-direction:row;align-items:center}
+.hero-bg{position:absolute;inset:0;background:url("image/coder-image.png") right center / cover no-repeat}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,15,25,.55) 0%,rgba(11,15,25,.2) 45%,rgba(11,15,25,0) 70%),linear-gradient(180deg,rgba(11,15,25,0) 70%,var(--bg) 100%)}
+.hero-in{position:relative;z-index:1;width:100%;max-width:1000px;margin:0 auto;padding:80px 5vw 60px}
+.hero-in .lead{max-width:480px}
+
+/* glowing ring behind profile photo */
+.photo-wrap{position:relative;width:170px;height:170px;margin-bottom:22px}
+.photo-wrap::before{content:"";position:absolute;inset:-8px;border-radius:50%;background:conic-gradient(var(--a),var(--b),var(--a));filter:blur(12px);opacity:.75;animation:spin 6s linear infinite}
+.avatar{position:relative;width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center top;border:3px solid var(--a);display:flex;align-items:center;justify-content:center;font-size:48px;font-weight:800;color:#0b0f19;background:linear-gradient(135deg,var(--a),var(--b))}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ===== CARDS ===== */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:16px}
+.two .box{margin-bottom:0}
+.box h3{margin-bottom:4px;font-size:18px}
+.box p{color:var(--mut);font-size:15px}
+.box p b{color:var(--tx)}
+.meta{color:var(--a);font-size:13px;margin-bottom:6px}
+.chip{display:inline-block;background:#141b2d;border:1px solid #26314d;color:var(--a);padding:4px 12px;border-radius:99px;font-size:13px;margin:0 6px 6px 0}
+
+/* ===== SKILL BARS ===== */
+.bar{margin-bottom:16px}
+.bar:last-child{margin-bottom:0}
+.bl{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
+.track{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b));border-radius:99px;transition:width 1.2s ease}
+
+/* ===== PROJECTS ===== */
+.proj dt{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--a);margin-top:14px}
+.proj dd{color:var(--mut);font-size:14px}
+.proj .btn{margin-top:18px}
+
+/* ===== CERTIFICATE ===== */
+.cert-img{width:100%;max-width:800px;height:auto;border-radius:12px;border:1px solid var(--line);margin:16px 0;display:block}
+
+/* ===== CONTACT ===== */
+.ct{display:flex;align-items:center;gap:16px}
+.ct i{font-style:normal;font-size:26px}
+.ct a{color:var(--a);text-decoration:none;word-break:break-all}
+
+/* ===== FADE-IN ON SCROLL ===== */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+footer{text-align:center;color:var(--mut);font-size:13px;padding:24px;border-top:1px solid var(--line)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--a);outline-offset:2px}
+
+/* ===== PHONE ===== */
+@media(max-width:700px){
+  .menu{display:block}
+  #links{display:none;width:100%;flex-direction:column;padding-top:10px}
+  #links.open{display:flex}
+  section{scroll-margin-top:70px}
+  #home{flex-direction:column;align-items:stretch;min-height:0}
+  .hero-bg{position:relative;inset:auto;height:260px;background-size:cover;background-position:78% center}
+  .hero-bg::after{background:linear-gradient(180deg,rgba(11,15,25,0) 35%,var(--bg) 100%)}
+  .hero-in{margin-top:-95px;padding:0 5vw 50px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .fill,.reveal{transition:none}
+  .reveal{opacity:1;transform:none}
+  .photo-wrap::before{animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a class="logo" href="#home">&lt;<span>Shankar</span>/&gt;</a>
+  <button class="menu" id="menu" aria-label="Toggle menu">&#9776;</button>
+  <nav id="links">
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HOME -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-in">
+    <div class="photo-wrap"><img class="avatar" src="image/Shankar_image.jpeg" alt="Shankar Kadam" onerror="this.outerHTML='<div class=&quot;avatar&quot;>SK</div>'"></div>
+    <p class="hi">Hello, I'm</p>
+    <h1><span class="g">Shankar Kadam</span></h1>
+    <p class="hero-role">Java Developer | Software Developer Fresher</p>
+    <p class="lead">From Nanded, Maharashtra. I build backend applications with Core Java, Spring Boot, Hibernate, REST APIs and Oracle SQL, and I'm looking for a Java Developer role where I can learn and grow.</p>
+    <div>
+      <a class="btn p" href="#projects">View Projects &rarr;</a>
+      <a class="btn" href="#contact">Contact Me &#9993;</a>
+      <a class="btn" href="https://github.com/Shankar9282" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <h2>About <span class="g">Me</span></h2>
+    <p class="lead">Hi, I'm Shankar Kadam from Nanded, Maharashtra. I completed my BCA in Computer Science &amp; IT from MGM College, Nanded, in 2025. I'm passionate about Java and backend development, and I have knowledge of Core Java, Spring Boot, Hibernate, REST APIs and Oracle SQL. I enjoy building real-world applications and continuously improving my technical skills.</p>
+    <div class="two">
+      <div class="box"><h3>Personal info</h3><p><b>Name:</b> Shankar Kadam<br><b>From:</b> Nanded, Maharashtra, India<br><b>Role:</b> Java Developer (Fresher)<br><b>Email:</b> kadamshankar2004@gmail.com</p></div>
+      <div class="box"><h3>Career goal</h3><p>To work as a Java Developer where I can learn, contribute and grow while building reliable backend systems.</p></div>
+    </div>
+    <h2 class="sub">Education</h2>
+    <div class="box"><h3>Bachelor of Computer Applications (BCA)</h3><div class="meta">MGM College of CS and IT, Nanded &middot; 2022 &ndash; 2025</div><p>Marks: <b>65.67%</b></p></div>
+    <div class="box"><h3>Higher Secondary Certificate (12th)</h3><div class="meta">Lts. M. College Higher Education, Malegaon &middot; 2020 &ndash; 2022</div><p>Marks: <b>71.33%</b></p></div>
+    <div class="box"><h3>Secondary School Certificate (10th)</h3><div class="meta">S.P.M.H. School, Malegaon &middot; 2020</div><p>Marks: <b>79.20%</b></p></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <h2>Languages &amp; <span class="g">Skills</span></h2>
+    <p class="lead">Technologies I have learned and used in my projects.</p>
+    <div class="box" id="bars"></div>
+    <div class="box"><h3>Tools</h3><p id="tools"></p></div>
+
+    <h2 class="sub">Certifications &amp; training</h2>
+    <div class="box">
+      <h3>Full Stack Java Development</h3>
+      <div class="meta">Naresh IT, Hyderabad &middot; 8 months</div>
+      <p>Completed an 8-month Full Stack Java Development program with practical learning in Java, backend development, web technologies, databases and software development tools. I worked on multiple Java and Spring Boot applications covering CRUD operations, REST APIs, database integration, Hibernate/JPA, layered architecture and frontend-backend integration.</p>
+      <img class="cert-img" src="image/Cerificate/nit-certification.jpeg" alt="Full Stack Java Development Certificate - Naresh IT">
+      <a class="btn p" href="image/Cerificate/nit-certification.jpeg" target="_blank" rel="noopener">Open full size</a>
+    </div>
+    <h3 class="sub2">Topics covered</h3>
+    <div class="two" id="topics"></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="reveal">
+    <h2>My <span class="g">Projects</span></h2>
+    <p class="lead">Four Java and Spring Boot projects. Each card shows what it does, the tech used and what I learned.</p>
+    <div class="two" id="projList"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <h2>Contact <span class="g">Me</span></h2>
+    <p class="lead">I'm open to Java Developer roles and internships. Send me a message.</p>
+    <div class="two">
+      <div class="box ct"><i>&#9993;</i><div><h3>Email</h3><p><a href="mailto:kadamshankar2004@gmail.com">kadamshankar2004@gmail.com</a></p></div></div>
+      <div class="box ct"><i>&#9742;</i><div><h3>Phone</h3><p><a href="tel:+917620928209">+91 7620928209</a></p></div></div>
+      <div class="box ct"><i>&#128205;</i><div><h3>Location</h3><p>Nanded, Maharashtra, India</p></div></div>
+      <div class="box ct"><i>&#128187;</i><div><h3>GitHub</h3><p><a href="https://github.com/Shankar9282" target="_blank" rel="noopener">github.com/Shankar9282</a></p></div></div>
+      <div class="box ct"><i>&#128188;</i><div><h3>LinkedIn</h3><p><a href="https://www.linkedin.com/in/shankar-kadam1" target="_blank" rel="noopener">linkedin.com/in/shankar-kadam1</a></p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>&copy; 2026 Shankar Kadam &middot; Nanded, Maharashtra, India</footer>
+
+<script>
+/* ===== EDIT YOUR DATA HERE ===== */
+const skills = [
+  ["Java",85],["Spring Boot",80],["Microservices",65],["SQL / Oracle SQL",80],
+  ["HTML",80],["CSS",75],["JavaScript",65],["Hibernate / JPA",75],["REST API",80]
+];
+
+const tools = ["Eclipse","IntelliJ IDEA","Spring Tool Suite (STS)","Oracle SQL Developer / SQL*Plus","Postman","Git","GitHub","Maven","Apache Tomcat","Kafka","JUnit","Mockito","Docker"];
+
+const topics = {
+  "Core Java":["OOPs Concepts","Classes & Objects","Inheritance","Polymorphism","Abstraction","Encapsulation","Exception Handling","Collections Framework","Multithreading","Java 8 Features","Lambda Expressions","Stream API"],
+  "Advanced Java":["JDBC","Servlets","JSP","MVC Architecture"],
+  "Database":["SQL","Oracle Database","SQL*Plus","Joins","Subqueries","Functions","Procedures","PL/SQL"],
+  "Hibernate & JPA":["ORM Concepts","Entity Mapping","Relationships","CRUD Operations","JPA/Hibernate Integration"],
+  "Spring Framework":["IoC","Dependency Injection","Spring Core","ApplicationContext"],
+  "Spring Boot":["REST API Development","CRUD Operations","Spring Data JPA","Layered Architecture","Exception Handling","Database Integration"],
+  "Web Technologies":["HTML","CSS","JavaScript","JSP"],
+  "Additional Technologies":["Microservices","Kafka","Docker","JUnit","Mockito"],
+  "Development Tools":["Eclipse","Spring Tool Suite","Maven","Postman","Git","GitHub","Apache Tomcat"]
+};
+
+const projects = [
+  {
+    name:"Online Employee Management System",
+    summary:"A web-based employee management application to add, view, update and delete employee records. It follows a layered architecture and uses REST APIs for communication between the application and the database.",
+    tech:["Java","Spring Boot","Spring Data JPA","Hibernate","REST API","Oracle SQL","Maven","HTML","CSS","JavaScript","Postman"],
+    learned:"How to build REST APIs with Spring Boot, implement CRUD operations, connect Spring Boot with Oracle using JPA/Hibernate, and work with Controller, Service and Repository layers.",
+    github:"https://github.com/Shankar9282/Employee-Management-System"
+  },
+  {
+    name:"Library Management System",
+    summary:"A library application to manage books and library records. It lets you add, update, search and manage book information efficiently.",
+    tech:["Java","Spring Boot","Hibernate","REST API","Oracle SQL","HTML","CSS","JavaScript","Maven","Postman"],
+    learned:"How to develop CRUD applications, perform database operations with Hibernate/JPA, create REST APIs, and organize an application using layered architecture.",
+    github:"https://github.com/Shankar9282/Library-Management-System"
+  },
+  {
+    name:"Online Food Management System",
+    summary:"A web-based food ordering application where users can view food items and manage food orders, backed by a structured backend for food and order operations.",
+    tech:["Java","Spring Boot","JSP","REST API","Hibernate","Oracle SQL","HTML","CSS","JavaScript","Maven"],
+    learned:"How to build web applications with Spring Boot and JSP, create controllers and services, perform database operations, and manage food order information.",
+    github:"https://github.com/Shankar9282/Online-Food-Delivery-System"
+  },
+  {
+    name:"Student Management System",
+    summary:"A web-based application for managing student details and academic records, with CRUD functionality to handle student data efficiently.",
+    tech:["Java","Spring Boot","Hibernate","REST API","Oracle SQL","HTML","CSS","JavaScript","Maven","Postman"],
+    learned:"How to create CRUD applications, develop REST APIs, perform database operations with Hibernate/JPA, and use Controller, Service and Repository layers.",
+    github:"https://github.com/Shankar9282/Student-Management-System"
+  }
+];
+
+/* ===== BUILD THE SECTIONS ===== */
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const chips = list => list.map(t => `<span class="chip">${esc(t)}</span>`).join("");
+
+document.getElementById("bars").innerHTML = skills.map(([n,p]) =>
+  `<div class="bar"><div class="bl"><span>${esc(n)}</span><span>${p}%</span></div><div class="track"><div class="fill" data-w="${p}"></div></div></div>`
+).join("");
+
+document.getElementById("tools").innerHTML = chips(tools);
+
+document.getElementById("topics").innerHTML = Object.entries(topics).map(([t,l]) =>
+  `<div class="box"><h3>${esc(t)}</h3><p>${chips(l)}</p></div>`
+).join("");
+
+document.getElementById("projList").innerHTML = projects.map(p =>
+  `<article class="box proj"><h3>${esc(p.name)}</h3><dl>
+    <dt>Summary</dt><dd>${esc(p.summary)}</dd>
+    <dt>Tech used</dt><dd>${chips(p.tech)}</dd>
+    <dt>What I learned</dt><dd>${esc(p.learned)}</dd>
+  </dl><a class="btn p" href="${p.github}" target="_blank" rel="noopener">View on GitHub</a></article>`
+).join("");
+
+/* ===== MOBILE MENU ===== */
+const links = document.getElementById("links");
+document.getElementById("menu").addEventListener("click", () => links.classList.toggle("open"));
+links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => links.classList.remove("open")));
+
+/* ===== HIGHLIGHT CURRENT SECTION IN MENU ===== */
+const navLinks = links.querySelectorAll("a");
+const sections = document.querySelectorAll("section");
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id));
+    }
+  });
+}, { rootMargin: "-45% 0px -50% 0px" });
+sections.forEach(s => spy.observe(s));
+
+/* ===== FADE-IN + SKILL BARS WHEN SCROLLED INTO VIEW ===== */
+const reveal = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add("in");
+      e.target.querySelectorAll(".fill").forEach(f => f.style.width = f.dataset.w + "%");
+      reveal.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll(".reveal").forEach(el => reveal.observe(el));
+</script>
+</body>
+</html>
